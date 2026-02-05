@@ -77,7 +77,7 @@ moru sandbox create python
 
 | Concept | Description |
 |---------|-------------|
-| **Sandbox** | Isolated VM with 2 vCPUs, 1GB RAM (up to 8 vCPUs, 8GB RAM). Default timeout is 1 hour. |
+| **Sandbox** | Isolated VM with up to 2 vCPUs, 4GB RAM, 10GB disk. Default timeout is 1 hour. |
 | **Template** | Pre-built environment with packages installed. Sandboxes start instantly from templates. |
 | **Volume** | Persistent storage that survives sandbox restarts. Mount to `/workspace`, `/data`, `/mnt`, or `/volumes`. |
 
