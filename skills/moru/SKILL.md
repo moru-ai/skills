@@ -18,7 +18,7 @@ Isolated Firecracker microVMs with dedicated CPU, memory, and filesystem for saf
 ## Core Concepts
 
 ### Sandbox
-Isolated VM with 2 vCPUs, 512MB RAM, 10GB disk. Auto-terminates after 5 minutes (configurable up to 24h).
+Isolated VM with 2 vCPUs, 1GB RAM (configurable up to 8 vCPUs, 8GB RAM). Default timeout is 1 hour.
 
 ### Template
 Pre-built environment with packages installed. Sandboxes start instantly from templates.
@@ -85,7 +85,7 @@ moru volume delete <name>
 
 | Resource | Default | Maximum |
 |----------|---------|---------|
-| vCPUs | 2 | Plan-dependent |
-| Memory | 512 MB | 4 GB |
-| Disk | 10 GB | 10 GB |
-| Timeout | 5 min | 1h (hobby) / 24h (pro) |
+| vCPUs | 2 | 8 |
+| Memory | 1 GB | 8 GB |
+| Timeout | 1 hour | Plan-dependent |
+| Concurrent Sandboxes | 20 per team | Expandable via addons |
