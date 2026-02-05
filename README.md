@@ -2,13 +2,20 @@
 
 Agent skills for [Moru](https://moru.io) cloud sandboxes - isolated Firecracker microVMs for safe code execution.
 
-## Available Skills
+## Skills Overview
+
+### Essential Skills
 
 | Skill | Description |
 |-------|-------------|
-| **moru** | Overview, CLI usage, and core concepts |
-| **moru-python** | Python SDK (`pip install moru`) |
-| **moru-javascript** | JavaScript/TypeScript SDK (`npm install @moru-ai/core`) |
+| **moru** | CLI commands, core concepts, architecture overview |
+
+### SDK Skills
+
+| Skill | Description |
+|-------|-------------|
+| **moru-python** | Python SDK (`pip install moru`) - Sandbox, Volume, Template APIs |
+| **moru-javascript** | JavaScript/TypeScript SDK (`npm install @moru-ai/core`) - Full TypeScript support |
 
 ## Installation
 
@@ -18,45 +25,77 @@ npx skills add moru-ai/skills
 
 # Install specific skill
 npx skills add moru-ai/skills --skill moru-python
+npx skills add moru-ai/skills --skill moru-javascript
 ```
-
-## Usage
-
-Skills activate automatically when relevant context is detected:
-- Ask about Moru concepts or CLI commands → `moru` skill
-- Write Python code with sandboxes → `moru-python` skill
-- Write JavaScript/TypeScript code with sandboxes → `moru-javascript` skill
 
 ## Quick Start
 
 ### Python
+
 ```python
 from moru import Sandbox
 
 with Sandbox.create() as sbx:
-    result = sbx.commands.run("echo 'Hello from Moru!'")
+    sbx.files.write("/app/script.py", "print('Hello from Moru!')")
+    result = sbx.commands.run("python3 /app/script.py")
     print(result.stdout)
+# Sandbox auto-killed
 ```
 
 ### JavaScript/TypeScript
+
 ```typescript
 import Sandbox from '@moru-ai/core'
 
 const sbx = await Sandbox.create()
 try {
-  const result = await sbx.commands.run("echo 'Hello from Moru!'")
+  await sbx.files.write("/app/script.py", "print('Hello from Moru!')")
+  const result = await sbx.commands.run("python3 /app/script.py")
   console.log(result.stdout)
 } finally {
   await sbx.kill()
 }
 ```
 
+### CLI
+
+```bash
+# Install CLI
+curl -fsSL https://moru.io/cli/install.sh | bash
+
+# Login
+moru auth login
+
+# Run command in sandbox
+moru sandbox run base echo 'hello world'
+
+# Create interactive sandbox
+moru sandbox create python
+```
+
+## Core Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Sandbox** | Isolated VM with 2 vCPUs, 512MB RAM, 10GB disk. Auto-terminates after 5 minutes (configurable up to 24h). |
+| **Template** | Pre-built environment with packages installed. Sandboxes start instantly from templates. |
+| **Volume** | Persistent storage that survives sandbox restarts. Mount to `/workspace`, `/data`, `/mnt`, or `/volumes`. |
+
 ## Resources
 
-- [Documentation](https://docs.moru.io)
+- [Documentation](https://moru.io/docs)
 - [Dashboard](https://moru.io/dashboard)
 - [API Keys](https://moru.io/dashboard?tab=keys)
 
 ## Contributing
 
-Skills follow the [Agent Skills](https://agentskills.io) open standard. Each skill directory under `skills/` must include a `SKILL.md` file with YAML frontmatter specifying `name` and `description`.
+See [AGENTS.md](./AGENTS.md) for contribution guidelines.
+
+Skills follow the [Agent Skills](https://agentskills.io) open standard. Each skill directory under `skills/` must include:
+
+1. `SKILL.md` with YAML frontmatter (`name`, `description`)
+2. `LICENSE.txt` with license terms
+
+## License
+
+Apache 2.0 - See [LICENSE.txt](./skills/moru/LICENSE.txt) for details.

@@ -1,0 +1,24 @@
+{
+  "name": "moru-agent-skills",
+  "owner": {
+    "name": "Moru AI",
+    "email": "support@moru.io"
+  },
+  "metadata": {
+    "description": "Agent skills for Moru cloud sandboxes",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "moru-skills",
+      "description": "Complete collection of Moru cloud sandbox skills for CLI, Python SDK, and JavaScript/TypeScript SDK",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/moru",
+        "./skills/moru-python",
+        "./skills/moru-javascript"
+      ]
+    }
+  ]
+}

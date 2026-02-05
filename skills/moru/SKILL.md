@@ -1,6 +1,6 @@
 ---
 name: moru
-description: "Overview of Moru cloud sandboxes - isolated Firecracker microVMs for safe code execution. Use this skill for general concepts, CLI usage, or when unsure which SDK to use. For SDK-specific guidance, see moru-python or moru-javascript skills."
+description: "Use this skill for Moru cloud sandbox concepts, CLI commands, and general guidance. Moru provides isolated Firecracker microVMs with dedicated CPU, memory, and filesystem for safe code execution. This skill covers: installing the Moru CLI, authenticating with `moru auth login`, creating sandboxes with `moru sandbox create`, running commands with `moru sandbox run`, managing templates with `moru template`, working with persistent volumes via `moru volume`, and understanding core concepts like sandboxes, templates, and volumes. Use this skill when users ask about Moru architecture, CLI usage, environment variables (MORU_API_KEY, MORU_ACCESS_TOKEN), resource limits, or when unsure which SDK to use. For writing Python code with sandboxes, use moru-python instead. For JavaScript/TypeScript code, use moru-javascript instead. Triggers on: 'moru cli', 'moru sandbox', 'moru template', 'moru volume', 'moru auth', 'install moru', 'what is moru', 'moru concepts'."
 ---
 
 # Moru Cloud Sandboxes
