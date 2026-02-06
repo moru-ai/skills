@@ -1,6 +1,6 @@
 # Moru Agent Skills
 
-Agent skills for [Moru](https://moru.io) cloud sandboxes - isolated Firecracker microVMs for safe code execution.
+Agent skills for [Moru](https://moru.io) cloud sandboxes - isolated microVMs for AI Agent workloads.
 
 ## Skills Overview
 
